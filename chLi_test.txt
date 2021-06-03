@@ -1,0 +1,9 @@
+====trans yolo model to tf model====
+
+git clone https://github.com/jinyu121/DW2TF.git
+cd DW2TF
+python main.py --cfg yolov3/yolov3.cfg --weights yolov3/yolov3.weights --output data/ --prefix yolov3_/ --gpu 0
+
+====trans tf model to ir model====
+
+python "C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/model_optimizer/mo.py" --input_model "E:/chLi/DW2TF/data/yolov3.pb" -b 1 --tensorflow_use_custom_operations_config "C:/Program Files (x86)/IntelSWTools/openvino/deployment_tools/model_optimizer/extensions/front/tf/yolo_v3.json"
